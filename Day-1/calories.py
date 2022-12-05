@@ -1,9 +1,8 @@
 import sys
+from pprint import pprint
 
 def main():
-    if len(sys.argv) > 1:
-        # Opening JSON file
-        file1 = open(sys.argv[1], 'r')
+    file1 = open("input.txt", 'r')
 
     elf_index = 0
     elves = []
@@ -19,9 +18,11 @@ def main():
     # Closing files
     file1.close()
 
-    elves = sorted(elves, key=lambda tup: tup[1])
-    print("The elf carrying most calories is number {} carrying {} calories total".format(elves[0][0], elves[0][1]))
 
+    elves = sorted(elves, key=lambda tup: tup[1], reverse=True)
+    print("The elf carrying most calories is number {} carrying {} calories total".format(elves[0][0], elves[0][1]))
+    final_calories = elves[0][1] + elves[1][1] + elves[2][1]
+    print("The three elves carrying most calories are numbers {}, {}, {} carrying {} calories total".format(elves[0][0], elves[1][0], elves[2][0], final_calories))
 
 if __name__ == "__main__":
     main()
